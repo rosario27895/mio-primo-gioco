@@ -1,16 +1,146 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Il mio primo gioco</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raccolta Monetine - Stile Mario</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-  <h1>🎮 Clicca e fai punti!</h1>
-  <p>Punteggio: <span id="score">0</span></p>
-  <button id="clickButton">Cliccami!</button>
-
-  <script src="script.js"></script>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-gamepad"></i> Raccolta Monetine</h1>
+            <p class="subtitle">Muovi il personaggio per raccogliere le monetine e accumulare punti!</p>
+        </header>
+        
+        <div class="game-info">
+            <div class="score-container">
+                <div class="score-display">
+                    <i class="fas fa-coins"></i>
+                    <span>Punti: <span id="score">0</span></span>
+                </div>
+                <div class="coins-display">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Monetine: <span id="coins">0</span>/10</span>
+                </div>
+                <div class="time-display">
+                    <i class="fas fa-clock"></i>
+                    <span>Tempo: <span id="time">60</span>s</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="startBtn" class="btn">
+                    <i class="fas fa-play"></i> Inizia Gioco
+                </button>
+                <button id="resetBtn" class="btn secondary">
+                    <i class="fas fa-redo"></i> Ricomincia
+                </button>
+                <button id="helpBtn" class="btn secondary">
+                    <i class="fas fa-question-circle"></i> Istruzioni
+                </button>
+            </div>
+        </div>
+        
+        <div class="game-container">
+            <div id="gameArea">
+                <!-- Personaggio Mario -->
+                <div id="player"></div>
+                
+                <!-- Le monetine saranno generate dinamicamente via JavaScript -->
+            </div>
+            
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> Controlli</h3>
+                <div class="controls-grid">
+                    <div class="control-item">
+                        <span class="key">W</span>
+                        <span class="key-label">Su</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">S</span>
+                        <span class="key-label">Giù</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">A</span>
+                        <span class="key-label">Sinistra</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">D</span>
+                        <span class="key-label">Destra</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key"><i class="fas fa-mouse-pointer"></i></span>
+                        <span class="key-label">Clicca per muoverti</span>
+                    </div>
+                </div>
+                <p class="hint">Puoi usare anche le frecce direzionali sulla tastiera</p>
+            </div>
+        </div>
+        
+        <div class="messages">
+            <div id="message" class="message"></div>
+        </div>
+        
+        <footer>
+            <p>Gioco creato in HTML, CSS e JavaScript - Personaggio in stile Super Mario</p>
+        </footer>
+    </div>
+    
+    <!-- Modale Istruzioni -->
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-book"></i> Istruzioni del Gioco</h2>
+                <span id="closeModal" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="instruction-item">
+                    <div class="instruction-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="instruction-text">
+                        <h3>Il Personaggio</h3>
+                        <p>Controlli il personaggio in stile Mario. Deve raccogliere tutte le monetine nell'area di gioco.</p>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="instruction-text">
+                        <h3>Le Monetine</h3>
+                        <p>Raccogli le 10 monetine gialle per completare il livello. Ogni moneta vale 10 punti.</p>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="instruction-text">
+                        <h3>Il Tempo</h3>
+                        <p>Hai 60 secondi per raccogliere tutte le monetine. Il timer inizia quando clicchi "Inizia Gioco".</p>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="instruction-text">
+                        <h3>Vittoria</h3>
+                        <p>Vinci se raccogli tutte le monetine prima che il tempo scada!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="startFromModal" class="btn">
+                    <i class="fas fa-play"></i> Inizia a Giocare!
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
